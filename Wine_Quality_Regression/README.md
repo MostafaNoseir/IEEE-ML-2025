@@ -17,12 +17,15 @@ This notebook presents an end-to-end machine learning pipeline for **multiclass 
 ### 1. Data Exploration
 - Loaded and inspected the dataset.
 - Performed summary statistics and null value checks.
-- Visualized feature distributions using **Seaborn** and **Matplotlib**.
+- Remove Duplicates.
+- Handle Outliers by remove them.
+- Visualized feature Distributions and Correlation.
 
 ### 2. Data Preprocessing
-- Encoded categorical variables.
+- Ordinal Encoding for Target.
 - Standardized numerical features using `StandardScaler`.
 - Split data into training and test sets.
+- Apply Feature Selection (optional).
 - Handled class imbalance with techniques like **SMOTE** (optional).
 
 ### 3. Model Training
@@ -63,8 +66,6 @@ This notebook presents an end-to-end machine learning pipeline for **multiclass 
 | Tuned Multinomial (Grid) | 0.83     |
 
 - **Multinomial Logistic Regression** gave slightly better generalization.
-- **L1 Regularization** combined with **SAGA** solver improved minority class performance.
-- **ROC-AUC** confirmed confident class-wise predictions.
 
 ---
 
