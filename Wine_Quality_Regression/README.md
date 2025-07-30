@@ -1,7 +1,7 @@
 📊 Logistic Regression on Food Items Dataset
 ---
 📝 Overview:
-This notebook presents an end-to-end machine learning pipeline for multiclass classification using Logistic Regression. It compares Multinomial Logistic Regression with the One-vs-Rest strategy, explores regularization, and performs hyperparameter tuning to improve model performance.
+- This notebook presents an end-to-end machine learning pipeline for multiclass classification using Logistic Regression. It compares Multinomial Logistic Regression with the One-vs-Rest strategy, explores regularization, and performs hyperparameter tuning to improve model performance.
 
 📁 Dataset:
 - Source: Food Items Dataset
