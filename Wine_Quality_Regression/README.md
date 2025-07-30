@@ -2,19 +2,17 @@
 ---
 📝 Overview:
 This notebook presents an end-to-end machine learning pipeline for multiclass classification using Logistic Regression. It compares Multinomial Logistic Regression with the One-vs-Rest strategy, explores regularization, and performs hyperparameter tuning to improve model performance.
+
+📁 Dataset:
+- Source: Food Items Dataset
+- Features: Includes nutritional information like calories, protein, fat, etc.
+- Target: Multiclass labels indicating food categories.
 ---
 
-📁 Dataset
-Source: Food Items Dataset
-Features: Includes nutritional information like calories, protein, fat, etc.
-Target: Multiclass labels indicating food categories.
-
-🔍 Workflow Summary
-
 1. Data Exploration
-Initial loading and inspection of the dataset.
-Summary statistics, null value checking.
-Visualizations using Seaborn and Matplotlib for feature distribution.
+- Initial loading and inspection of the dataset.
+- Summary statistics, null value checking.
+- Visualizations using Seaborn and Matplotlib for feature distribution.
 ---
 
 3. Data Preprocessing
