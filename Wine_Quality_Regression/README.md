@@ -1,75 +1,87 @@
-# 📊 Logistic Regression on Food Items Dataset
+# 💎 Diamond Price Prediction
 
 ## 📝 Overview
-This notebook presents an end-to-end machine learning pipeline for **multiclass classification** using **Logistic Regression**. It compares **Multinomial Logistic Regression** with the **One-vs-Rest strategy**, explores regularization, and performs hyperparameter tuning to improve model performance.
+This project presents a comprehensive regression analysis to predict **diamond prices** using various linear models including **Linear Regression**, **Ridge**, **Lasso**, and **ElasticNet**. The notebook follows a structured machine learning pipeline from exploratory data analysis to model evaluation.
 
 ---
 
 ## 📁 Dataset
-- **Source**: Food Items Dataset  
-- **Features**: Includes nutritional information like calories, protein, fat, etc.  
-- **Target**: Multiclass labels indicating food categories.
+- **Source**: Diamonds dataset (53,940 records)
+- **Features**:
+  - `carat`, `cut`, `color`, `clarity`, `depth`, `table`, `x`, `y`, `z`
+- **Target**: `price` (in US dollars)
 
 ---
 
 ## 🔍 Workflow Summary
 
 ### 1. Data Exploration
-- Loaded and inspected the dataset.
-- Performed summary statistics and null value checks.
-- Remove Duplicates.
-- Handle Outliers by remove them.
-- Visualized feature Distributions and Correlation.
+- Loaded the dataset and viewed basic statistics (`shape`, `info()`, `describe()`)
+- Identified categorical (`cut`, `color`, `clarity`) and numerical columns
 
-### 2. Data Preprocessing
-- Ordinal Encoding for Target.
-- Standardized numerical features using `StandardScaler`.
-- Split data into training and test sets.
-- Apply Feature Selection (optional).
-- Handled class imbalance with techniques like **SMOTE** (optional).
+### 2. Data Cleaning & Preprocessing
+- ✅ Dropped unnecessary column: `Unnamed: 0`
+- ✅ Removed duplicates
+- ✅ Confirmed no missing values
+- ✅ Visualized outliers with boxplots
+- ✅ Removed outliers using IQR method
+- ✅ Checked correlation with heatmap
+- ✅ Dropped `depth` due to low correlation with target
 
-### 3. Model Training
-- Trained **Multinomial Logistic Regression** (`multi_class='multinomial'`).
-- Trained **One-vs-Rest Logistic Regression** (`multi_class='ovr'`).
+### 3. Feature Engineering
+- Applied **one-hot encoding** to categorical features (`cut`, `color`, `clarity`)
+- Split data into **features (X)** and **target (y)**
 
-### 4. Evaluation Metrics
-- Calculated:
-  - Accuracy
-  - Precision, Recall, F1-score (per class)
-  - Macro & weighted averages
-  - Confusion Matrix
-  - **ROC-AUC** curves (using One-vs-Rest and `predict_proba`)
-
-### 5. Visualization
-- Plotted confusion matrices.
-- Plotted ROC-AUC curves for each class.
-
-### 6. Hyperparameter Tuning
-- Performed **GridSearchCV** with 5-fold cross-validation.
-- Tuned parameters:
-  - `C`: [0.01, 0.1, 1, 10, 100]
-  - `penalty`: ['l1', 'l2']
-  - `solver`: ['saga', 'lbfgs']
-- **Best Parameters**:
-  ```python
-  {'C': 10, 'penalty': 'l1', 'solver': 'saga'}
-  ```
+### 4. Data Splitting & Scaling
+- Split data into **training (80%)** and **testing (20%)** sets
+- Scaled numeric features (`carat`, `table`, `x`, `y`, `z`) using `MinMaxScaler`
 
 ---
 
-## ✅ Results Summary
+## 🤖 Model Training & Evaluation
 
-| Model                    | Accuracy |
-|--------------------------|----------|
-| One-vs-Rest Logistic     | 0.81     |
-| Multinomial Logistic     | 0.82     |
-| Tuned Multinomial (Grid) | 0.83     |
+### 🔹 Linear Regression
+- Trained on scaled data
+- Achieved:
+  - **R² Score**: 0.93
+  - **RMSE**: ~705
+  - **Adjusted R²**: 0.93
+- Visualized actual vs predicted prices with a scatter plot
 
-- **Multinomial Logistic Regression** gave slightly better generalization.
+### 🔹 Ridge Regression
+- Regularization parameter: `alpha=0.001`
+- Achieved similar performance as basic linear regression
+
+### 🔹 Lasso Regression
+- `alpha=0.001`, `max_iter=10000`
+- Performance nearly identical to Ridge
+
+### 🔹 ElasticNet Regression
+- `alpha=0.001`, `l1_ratio=0.8`
+- Slightly lower performance:
+  - **R² Score**: 0.92
+  - **RMSE**: ~716
 
 ---
 
-## 🧠 Key Insights
-- **Regularization** enhances generalization and reduces overfitting.
-- **Multinomial Logistic Regression** is more suited for true multiclass problems than One-vs-Rest.
-- **Hyperparameter tuning** can significantly improve performance.
+## 📊 Results Comparison
+
+| Model            | R² Score | RMSE |
+|------------------|----------|------|
+| Linear Regression| 0.93     | 705  |
+| Ridge            | 0.93     | 705  |
+| Lasso            | 0.93     | 705  |
+| ElasticNet       | 0.92     | 716  |
+
+---
+
+## ✅ Conclusion
+- The **basic Linear Regression model** outperformed regularized models on this dataset.
+- **Carat** had the highest coefficient, indicating it's the most influential feature.
+- **Regularization** did not significantly improve model performance, possibly due to proper preprocessing and low multicollinearity.
+
+---
+
+## 🧠 Key Takeaways
+- Removing outliers and proper encoding significantly improves model accuracy.
+- Always validate if regularization is necessary — sometimes simpler models perform best.
