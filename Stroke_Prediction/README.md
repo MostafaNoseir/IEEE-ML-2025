@@ -72,4 +72,7 @@ The dataset contains **multiple records** of individuals with the following feat
 | RPolynomialBF Kernel | 0.237    |
 
 ## 🧠 Key Insights
-- All Evaluations of all models in this data is very **bad** because **imbalanced** data
+- because **imbalanced** data didn't get high accuracy
+
+## Future work
+- Get more data for people whose have a stroke to balance data and make higher accuracy
