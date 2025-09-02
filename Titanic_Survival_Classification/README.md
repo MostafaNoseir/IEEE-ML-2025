@@ -24,9 +24,12 @@ This project aims to predict whether a passenger survived the Titanic disaster u
     *   Removed duplicate rows.
 3.  **Feature Engineering:** Categorical features (`Sex`, `Embarked`) were prepared for encoding.
 4.  **Exploratory Data Analysis (EDA):** Visualized the distribution of survival and its relationship with key categorical and numerical features.
-    *   Data is unbalanced, with more non-survivors (549) than survivors (342).
+    *   Data is **unbalanced**, with more non-survivors (549) than survivors (342).
     *   Observations on survival by Sex, Pclass, and Embarked were noted.
-5.  **Data Splitting and Scaling:** Split the data into training, validation, and test sets (80/10/10 split) and scaled the numerical features using StandardScaler. Addressed class imbalance using SMOTE on the training data.
+      - most of **Survived** are **Female**
+      - most of **not survived** are from **class 2**
+      - most of **not survived** are from **Embarked S**
+5.  **Data Splitting and Scaling:** Split the data into training, validation, and test sets **(80/10/10 split)** and scaled the numerical features using **StandardScaler**. Addressed class imbalance using **SMOTE** on the training data.
 6.  **Modeling:** Trained several classification models:
     *   Logistic Regression
     *   Decision Tree Classifier
@@ -42,3 +45,4 @@ This project aims to predict whether a passenger survived the Titanic disaster u
 The final evaluation on the test set provided the following performance metrics:
 
 **Best Tuned XGBoost Model Evaluation on Test Set:**
+- ROC-AUC: 0.82
